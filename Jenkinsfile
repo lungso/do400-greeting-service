@@ -22,5 +22,14 @@ pipeline{
         }
 
         // Add the "Deploy" stage here
+        stage('Deploy') {
+                steps {
+                    sh '''
+                    oc project ssl037-greetings
+                    oc start-build greeting-service --follow --wait
+                    ''' }
+        }
+                }
+        }
     }
 }
